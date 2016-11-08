@@ -1,0 +1,18 @@
+<div id ="create_poll" class=partial ng-init=pc.logCheck()>
+	<div id="top">
+		<h1>Put the question and options here:</h1>
+		<a href="#/polls">Go Back</a>
+	</div>	
+	<div id="questionaire">
+		<label>Question<input type="text" ng-model=pc.newPoll.question></label>
+		<label>Option 1<input type="text" ng-model=pc.newPoll.option1></label>
+		<label>Option 2<input type="text" ng-model=pc.newPoll.option2></label>
+		<label>Option 3<input type="text" ng-model=pc.newPoll.option3></label>
+		<label>Option 4<input type="text" ng-model=pc.newPoll.option4></label>
+		<input type="submit" value='Create Poll' ng-click=pc.createPoll() id="btn">
+	</div>
+	<div id="errors" ng-repeat='error in pc.pollsCreateError track by $index'>
+	<p>{{error}}<p>
+</div>
+</div>
+

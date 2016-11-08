@@ -1,0 +1,30 @@
+<div class="partial" ng-init=pc.getPolls()>
+	<div id="top">
+		<h1>Welcome {{pc.cu.username}}!!! Here are the current polls. </h1>
+		<a href="#/">Logout</a>
+		<a href="#/createPoll">Create new poll</a>
+	</div>
+	<div id="table">
+		<table class='table'>
+			<tr id="search">
+				<td><input type="text" placeholder ='Search by user' ng-model="filter_name.addedBy"></td> 
+				<td><input type="text" placeholder ='Search by question' ng-model="filter_name.question"></td>
+				<td><input type="text" placeholder ='Search by date' ng-model="filter_name.createdAt"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<th>Survey Question</th>
+				<th>Date Posted</th>
+				<th>Action</th>
+			</tr>
+							
+			<tr ng-repeat='poll in pc.allPolls | filter : filter_name track by $index' >
+				<td>{{poll.addedBy}}</td> 
+				<td><a href="#/poll/{{poll._id}}">{{poll.question}}</a></td>
+				<td>{{poll.createdAt | date: 'MMMM dd yyyy'}}</td>
+				<td><a href='' ng-click ="pc.destroy(poll._id)" ng-if="pc.cu.username==poll.addedBy">Delete</a></td>
+			</tr>
+		</table>
+	</div>
+</div>

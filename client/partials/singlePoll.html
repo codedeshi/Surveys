@@ -1,0 +1,18 @@
+<div ng-init=pc.getPoll() class="partial">
+	<div id="top">
+		<h1>{{pc.singlePoll.question}}</h1>
+		<a href="#/polls">Go Back</a>
+	</div>
+	<table class='table'>
+		<tr>
+			<th>Option</th>
+			<th>current Count of Votes</th>
+			<th>Action</th>
+		</tr>
+		<tr ng-repeat="option in pc.singlePoll.options track by $index">
+			<td>{{option.text}}</td>
+			<td>{{option.votes}}</td>
+			<td><input type="submit" value="Vote" ng-click=pc.vote(option._id)></td>
+		</tr>
+		</table>
+</div>
